@@ -1,0 +1,23 @@
+BootStrap: yum
+OSVersion: 7
+MirrorURL: http://mirror.centos.org/centos-%{OSVERSION}/%{OSVERSION}/BaseOS/$basearch/os/
+Include: yum
+
+%label
+    Maintainer: Nick Richardson 
+    Contact: njkrichardson@princeton.edu
+    Version 1.0
+
+%help
+    This is a Centos 7 Singularity container for running TritonRoute and OpenLane. 
+
+%runscript
+    echo "Running the main script from inside the CentOS container"
+
+%setup
+
+%post
+    echo "Installing packages into the Centos 7 container"
+    yum -y install zsh 
+    yum -y install vim-minimal
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
